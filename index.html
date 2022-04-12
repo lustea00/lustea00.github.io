@@ -1,13 +1,23 @@
 <html>
   <head>
-    <title>reCAPTCHA demo: Simple page</title>
+    <title>reCAPTCHA</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
-  <body>
+  <body style='background-color: aqua;'>
+    <div style='height: 60px;'></div>
     <form action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="6Ldi_WcfAAAAAAziaPmjph4fjiCrqaB4N4jusbpJ"></div>
-      <br/>
-      <input type="submit" value="Submit">
+      <div class="g-recaptcha" 
+        data-sitekey="6Ldi_WcfAAAAAAziaPmjph4fjiCrqaB4N4jusbpJ"
+        data-callback="captchaCallback"></div>
+
     </form>
+    <script>
+      function captchaCallback(response){
+        //console.log(response);
+        if(typeof Captcha!=="undefined"){
+          Captcha.postMessage(response);
+        }
+      }
+    </script>
   </body>
 </html>
